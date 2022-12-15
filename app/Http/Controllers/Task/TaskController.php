@@ -18,7 +18,7 @@ namespace App\Http\Controllers\Task;
 use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\TaskRequest;
 
 /**
  * Ресурсный контроллер для задач
@@ -63,11 +63,11 @@ class TaskController extends Controller
     /**
      * Сохранение новой задачи
      *
-     * @param Request $request запрос
+     * @param TaskRequest $request запрос
      *
      * @return RedirectResponse перенаправление
      */
-    public function store(Request $request)
+    public function store(TaskRequest $request)
     {
         Task::create($request->all());
 
@@ -107,12 +107,12 @@ class TaskController extends Controller
     /**
      * Обновление задачи
      *
-     * @param Request $request запрос
+     * @param TaskRequest $request запрос
      * @param int     $id      идентификатор задачи
      *
      * @return RedirectResponse перенаправление
      */
-    public function update(Request $request, $id)
+    public function update(TaskRequest $request, $id)
     {
         $task = Task::findOrFail($id);
         $task->update($request->except('user_id'));
