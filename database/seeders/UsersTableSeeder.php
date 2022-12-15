@@ -15,11 +15,12 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 /**
- * Загрузка данных
+ * Загрузка данных пользователей
  *
  * PHP version 7
  *
@@ -30,20 +31,18 @@ use Illuminate\Database\Seeder;
  * @version  Release: @package_version@
  * @link     http://php.net
  */
-class DatabaseSeeder extends Seeder
+class UsersTableSeeder extends Seeder
 {
     /**
-     * Загрузка данных в БД
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call(
-            [
-                UsersTableSeeder::class,
-                TasksTableSeeder::class,
-            ]
-        );
+        User::factory()
+            ->count(1)
+            ->test()
+            ->create();
     }
 }

@@ -15,11 +15,12 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Task;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 /**
- * Загрузка данных
+ * Загрузка задач для пользователя
  *
  * PHP version 7
  *
@@ -30,7 +31,7 @@ use Illuminate\Database\Seeder;
  * @version  Release: @package_version@
  * @link     http://php.net
  */
-class DatabaseSeeder extends Seeder
+class TasksTableSeeder extends Seeder
 {
     /**
      * Загрузка данных в БД
@@ -39,11 +40,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(
-            [
-                UsersTableSeeder::class,
-                TasksTableSeeder::class,
-            ]
-        );
+        Task::factory()
+            ->count(10)
+            ->create();
     }
 }
